@@ -17,5 +17,11 @@ RUN \
 # Define commonly used JAVA_HOME variable
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
+COPY build/distributions/unconference.zip /tmp/
+
+RUN unzip /tmp/unconference.zip -d /var/www/
+
+EXPOSE 8080
+
 # Define default command.
-CMD ["bash"]
+CMD ["/var/www/unconference/bin/unconference"]
