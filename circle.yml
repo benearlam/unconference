@@ -13,6 +13,5 @@ deployment:
   test:
     branch: master
     commands:
-      - echo $DOCKER_USER
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - docker push benearlam/unconference_web:$CIRCLE_SHA1
