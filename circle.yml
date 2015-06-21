@@ -5,7 +5,8 @@ machine:
     - docker
 
 dependencies:
-  pre:
+  override:
+    - ./gradlew assemble
     - docker build -t benearlam/unconference_web:$CIRCLE_SHA1 .
 
 deployment:
