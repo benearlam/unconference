@@ -2,8 +2,6 @@
 
 SHA1=$1
 
-sed "s/<AWS_ACCESS_KEY_ID>/$AWS_ACCESS_KEY_ID/;s/<AWS_SECRET_ACCESS_KEY>/$AWS_SECRET_ACCESS_KEY/" awssecret.template > .awssecret
-
 # Create new Elastic Beanstalk version
 EB_BUCKET=elasticbeanstalk-eu-west-1-951298071900
 
