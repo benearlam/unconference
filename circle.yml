@@ -5,12 +5,17 @@ machine:
     - docker
 
 dependencies:
+  cache_directories:
+    - "~/docker"
   override:
     - ./gradlew assemble
+    - docker info
+    - if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
     - docker build -t benearlam/unconference_web:$CIRCLE_SHA1 .
+    - mkdir -p ~/docker; docker save benearlam/unconference_web > ~/docker/image.tar
 
 deployment:
-  test:
+  hub:
     branch: master
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
