@@ -31,7 +31,7 @@ COPY build/distributions/unconference.zip /tmp/
 RUN unzip /tmp/unconference.zip -d /var/www/
 
 # Expose web app port
-EXPOSE 8080
+EXPOSE 3000
 
 # Run the app
 CMD ["/var/www/unconference/bin/unconference"]
