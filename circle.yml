@@ -11,7 +11,7 @@ dependencies:
     - ./gradlew assemble
     - if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
     - mkdir -p ~/docker; docker save benearlam/unconference_web > ~/docker/image.tar
-    - ./build_container.sh
+    - ./build_container.sh $CIRCLE_SHA1
     - sudo pip install awscli
 
 deployment:
