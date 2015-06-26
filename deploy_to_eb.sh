@@ -2,6 +2,17 @@
 
 SHA1=$1
 
+if [ -z "$SHA1" ]
+  then
+    echo "Error: no version supplied"
+    exit 1;
+fi
+
+# Push to docker
+docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+
+docker push benearlam/unconference_web:$SHA1
+
 # Create new Elastic Beanstalk version
 EB_BUCKET=elasticbeanstalk-eu-west-1-951298071900
 
